@@ -45,21 +45,23 @@ namespace WindowsFormsApp1
 
             SqlCommand sqlCommand = new SqlCommand("Select * From [Config]", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
-            sqlCommand.Parameters.AddWithValue("@Seria", "FX 6300");
-            sqlCommand.Parameters.AddWithValue("@Soket", "AM3+");
-            sqlCommand.Parameters.AddWithValue("@TechProc", 32);
-            sqlCommand.Parameters.AddWithValue("@EnergyPotr", 95);
-            sqlCommand.Parameters.AddWithValue("@Takt", 10);
-            sqlCommand.Parameters.AddWithValue("@Yadra", 6);
+            sqlCommand.Parameters.AddWithValue("Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
+            sqlCommand.Parameters.AddWithValue("Seria", "FX 6300");
+            sqlCommand.Parameters.AddWithValue("Soket", "AM3+");
+            sqlCommand.Parameters.AddWithValue("TechProc", 32);
+            sqlCommand.Parameters.AddWithValue("EnergyPotr", 95);
+            sqlCommand.Parameters.AddWithValue("Takt", 10);
+            sqlCommand.Parameters.AddWithValue("Yadra", 6);
 
             sqlConnection.Open();
             SqlDataReader reader = sqlCommand.ExecuteReader();
 
             while (reader.Read())
             {
-
+                WriteDataGridView[0, 0].Value = reader["Nazv"].ToString();
             }
+
+            sqlConnection.Close();
         }
     }
 }
