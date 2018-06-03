@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
             if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
                 sqlConnection.Close();
         }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
@@ -98,7 +99,6 @@ namespace WindowsFormsApp1
 
         private async void button4_Click(object sender, EventArgs e)
         {
-
             {
                 SqlCommand command = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
 
@@ -120,7 +120,6 @@ namespace WindowsFormsApp1
                 textBox13.Text = null;
 
                 await command.ExecuteNonQueryAsync();
-
             }
         }
 
@@ -128,7 +127,6 @@ namespace WindowsFormsApp1
         {
             if (label7.Visible)
                 label7.Visible = false;
-
 
             if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox1.Text) &&
                  !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrWhiteSpace(textBox2.Text) &&
@@ -151,7 +149,6 @@ namespace WindowsFormsApp1
                 command.Parameters.AddWithValue("House", textBox12.Text);
                 command.Parameters.AddWithValue("KonNumber", textBox13.Text);
                 command.Parameters.AddWithValue("Id", textBox5.Text);
-
 
                 textBox1.Text = null;
                 textBox2.Text = null;
@@ -188,7 +185,6 @@ namespace WindowsFormsApp1
             if (label8.Visible)
                 label8.Visible = false;
 
-
             if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 SqlCommand command = new SqlCommand("Delete from [Client] Where [NameOrg]=@NameOrg", sqlConnection);
@@ -211,4 +207,4 @@ namespace WindowsFormsApp1
 
         }
     }
-    }
+}

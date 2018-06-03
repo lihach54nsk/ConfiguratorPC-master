@@ -28,112 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.MainPage = new System.Windows.Forms.TabPage();
-            this.CPUTabPage = new System.Windows.Forms.TabPage();
-            this.GPUTabPage = new System.Windows.Forms.TabPage();
-            this.HardTabPage = new System.Windows.Forms.TabPage();
-            this.MotherTabPage = new System.Windows.Forms.TabPage();
-            this.PowerTabPage = new System.Windows.Forms.TabPage();
-            this.MemoryTabPage = new System.Windows.Forms.TabPage();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.RandomButton = new System.Windows.Forms.Button();
-            this.tabControl.SuspendLayout();
+            this.MainGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.MainGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.MainPage);
-            this.tabControl.Controls.Add(this.CPUTabPage);
-            this.tabControl.Controls.Add(this.GPUTabPage);
-            this.tabControl.Controls.Add(this.HardTabPage);
-            this.tabControl.Controls.Add(this.MotherTabPage);
-            this.tabControl.Controls.Add(this.PowerTabPage);
-            this.tabControl.Controls.Add(this.MemoryTabPage);
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(983, 290);
-            this.tabControl.TabIndex = 2;
-            // 
-            // MainPage
-            // 
-            this.MainPage.Location = new System.Drawing.Point(4, 22);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Padding = new System.Windows.Forms.Padding(3);
-            this.MainPage.Size = new System.Drawing.Size(975, 264);
-            this.MainPage.TabIndex = 0;
-            this.MainPage.Text = "Главная страница";
-            this.MainPage.UseVisualStyleBackColor = true;
-            // 
-            // CPUTabPage
-            // 
-            this.CPUTabPage.Location = new System.Drawing.Point(4, 22);
-            this.CPUTabPage.Name = "CPUTabPage";
-            this.CPUTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CPUTabPage.Size = new System.Drawing.Size(974, 264);
-            this.CPUTabPage.TabIndex = 1;
-            this.CPUTabPage.Text = "Процессоры";
-            this.CPUTabPage.UseVisualStyleBackColor = true;
-            // 
-            // GPUTabPage
-            // 
-            this.GPUTabPage.Location = new System.Drawing.Point(4, 22);
-            this.GPUTabPage.Name = "GPUTabPage";
-            this.GPUTabPage.Size = new System.Drawing.Size(974, 264);
-            this.GPUTabPage.TabIndex = 2;
-            this.GPUTabPage.Text = "Видеокарты";
-            this.GPUTabPage.UseVisualStyleBackColor = true;
-            // 
-            // HardTabPage
-            // 
-            this.HardTabPage.Location = new System.Drawing.Point(4, 22);
-            this.HardTabPage.Name = "HardTabPage";
-            this.HardTabPage.Size = new System.Drawing.Size(974, 264);
-            this.HardTabPage.TabIndex = 3;
-            this.HardTabPage.Text = "Жёсткие диски";
-            this.HardTabPage.UseVisualStyleBackColor = true;
-            // 
-            // MotherTabPage
-            // 
-            this.MotherTabPage.Location = new System.Drawing.Point(4, 22);
-            this.MotherTabPage.Name = "MotherTabPage";
-            this.MotherTabPage.Size = new System.Drawing.Size(974, 264);
-            this.MotherTabPage.TabIndex = 4;
-            this.MotherTabPage.Text = "Материнская плата";
-            this.MotherTabPage.UseVisualStyleBackColor = true;
-            // 
-            // PowerTabPage
-            // 
-            this.PowerTabPage.Location = new System.Drawing.Point(4, 22);
-            this.PowerTabPage.Name = "PowerTabPage";
-            this.PowerTabPage.Size = new System.Drawing.Size(974, 264);
-            this.PowerTabPage.TabIndex = 5;
-            this.PowerTabPage.Text = "Блоки питания";
-            this.PowerTabPage.UseVisualStyleBackColor = true;
-            // 
-            // MemoryTabPage
-            // 
-            this.MemoryTabPage.Location = new System.Drawing.Point(4, 22);
-            this.MemoryTabPage.Name = "MemoryTabPage";
-            this.MemoryTabPage.Size = new System.Drawing.Size(974, 264);
-            this.MemoryTabPage.TabIndex = 6;
-            this.MemoryTabPage.Text = "Оперативная память";
-            this.MemoryTabPage.UseVisualStyleBackColor = true;
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(12, 308);
+            this.AddButton.Location = new System.Drawing.Point(12, 293);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(116, 23);
             this.AddButton.TabIndex = 3;
             this.AddButton.Text = "Добавить в сборку";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(12, 337);
+            this.DeleteButton.Location = new System.Drawing.Point(12, 322);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(116, 23);
             this.DeleteButton.TabIndex = 4;
@@ -142,40 +62,85 @@
             // 
             // RandomButton
             // 
-            this.RandomButton.Location = new System.Drawing.Point(860, 308);
+            this.RandomButton.Location = new System.Drawing.Point(520, 293);
             this.RandomButton.Name = "RandomButton";
             this.RandomButton.Size = new System.Drawing.Size(135, 23);
             this.RandomButton.TabIndex = 5;
             this.RandomButton.Text = "Сборка имени рандома";
             this.RandomButton.UseVisualStyleBackColor = true;
+            this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
+            // 
+            // MainGridView
+            // 
+            this.MainGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.MainGridView.Location = new System.Drawing.Point(12, 12);
+            this.MainGridView.Name = "MainGridView";
+            this.MainGridView.Size = new System.Drawing.Size(643, 275);
+            this.MainGridView.TabIndex = 6;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "CPU";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "GPU";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Жёсткий диск";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Оперативная память";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Материнская плата";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Блок питания";
+            this.Column6.Name = "Column6";
             // 
             // Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 366);
+            this.ClientSize = new System.Drawing.Size(665, 350);
+            this.Controls.Add(this.MainGridView);
             this.Controls.Add(this.RandomButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.tabControl);
             this.Name = "Interface";
-            this.Text = "Interface";
-            this.tabControl.ResumeLayout(false);
+            this.Text = "Конфигуратор ПК";
+            ((System.ComponentModel.ISupportInitialize)(this.MainGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage MainPage;
-        private System.Windows.Forms.TabPage CPUTabPage;
-        private System.Windows.Forms.TabPage GPUTabPage;
-        private System.Windows.Forms.TabPage HardTabPage;
-        private System.Windows.Forms.TabPage MotherTabPage;
-        private System.Windows.Forms.TabPage PowerTabPage;
-        private System.Windows.Forms.TabPage MemoryTabPage;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button RandomButton;
+        private System.Windows.Forms.DataGridView MainGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
