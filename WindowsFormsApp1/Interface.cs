@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             sqlConnection.Open();
             SqlDataReader reader = sqlCommand.ExecuteReader();
 
-            MainGridView.Rows.Add();
+            ReadDataGridView.Rows.Add();
         }
     }
 }
