@@ -29,7 +29,12 @@ namespace WindowsFormsApp1
 
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            
+            SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            MainGridView.Rows.Add();
         }
     }
 }
