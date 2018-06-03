@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Interface : Form
     {
-        SqlConnection sqlConnection;
+        SqlConnection sqlConnection = new SqlConnection();
 
         public Interface()
         {
@@ -37,12 +37,20 @@ namespace WindowsFormsApp1
         {
             SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
 
+            sqlCommand.Parameters.AddWithValue("@Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
+            sqlCommand.Parameters.AddWithValue("@Seria", "FX 6300");
+            sqlCommand.Parameters.AddWithValue("@Soket", "AM3+");
+            sqlCommand.Parameters.AddWithValue("@TechProc", 32);
+            sqlCommand.Parameters.AddWithValue("@EnergyPotr", 95);
+            sqlCommand.Parameters.AddWithValue("@Takt", 10);
+            sqlCommand.Parameters.AddWithValue("@Yadra", 6);
+
             sqlConnection.Open();
             SqlDataReader reader = sqlCommand.ExecuteReader();
 
             for (int i = 0; i < 9; i++)
             {
-                ReadDataGridView.Rows.Add(reader.GetValue(1));
+                WriteDataGridView.Rows.Add(reader.GetValue(1));
             }
         }
     }
