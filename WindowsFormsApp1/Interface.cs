@@ -13,8 +13,6 @@ namespace WindowsFormsApp1
 {
     public partial class Interface : Form
     {
-
-
         SqlConnection sqlConnection;
 
         public Interface()
@@ -60,6 +58,7 @@ namespace WindowsFormsApp1
 
             while (await dataReader.ReadAsync())
             {
+                WriteDataGridView.Rows[0].Cells[0].Value = dataReader["Nazv"].ToString();
                 WriteDataGridView[0, 0].Value = dataReader["Nazv"].ToString();
                 WriteDataGridView[0, 1].Value = dataReader["Seria"].ToString();
                 WriteDataGridView[0, 2].Value = dataReader["Socket"].ToString();
