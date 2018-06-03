@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 
         public Interface()
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ГЕРАЛЬТ ИЗ РИВИИ\DESKTOP\CONFIGURATORPC-MASTER\WINDOWSFORMSAPP1\CONFIG.MDF;Integrated Security=True";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\APP\ConfiguratorPC-master\WINDOWSFORMSAPP1\CONFIG.MDF;Integrated Security=True";
             InitializeComponent();
             sqlConnection = new SqlConnection(connectionString);
         }
@@ -65,6 +65,41 @@ namespace WindowsFormsApp1
             }
 
             sqlConnection.Close();
+        }
+
+        private async void Interface_Load(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\APP\ConfiguratorPC-master\WINDOWSFORMSAPP1\CONFIG.MDF;Integrated Security=True";
+
+            sqlConnection = new SqlConnection(connectionString);
+
+            await sqlConnection.OpenAsync();
+
+            SqlDataReader sqlReader = null;
+
+            SqlCommand command = new SqlCommand("Select * From [Hard]", sqlConnection);
+
+
+            try
+            {
+                sqlReader = await command.ExecuteReaderAsync();
+
+                while (await sqlReader.ReadAsync())
+                {
+                    WriteDataGridView[0, 0].Value = sqlReader["Id"].ToString();
+                    //listBox1.Items.Add(sqlReader["Id"].ToString() + " " + sqlReader["Nazv"].ToString() + " " + sqlReader["Seria"].ToString() + " " + sqlReader["Prod"].ToString() + " " + sqlReader["Volume"].ToString() + " "
+                   // + sqlReader["Size"].ToString() + " " + sqlReader["TypeHS"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sqlReader != null)
+                    sqlReader.Close();
+            }
         }
     }
 }
