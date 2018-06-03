@@ -39,26 +39,30 @@ namespace WindowsFormsApp1
             sqlCommand.Parameters.AddWithValue("@Yadra", 6);
         }
 
-        private void RandomButton_Click(object sender, EventArgs e)
+        private async void RandomButton_Click(object sender, EventArgs e)
         {
-            //SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+            SqlCommand sqlCommandRead = new SqlCommand("Insert Into [CPU] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
 
-            SqlCommand sqlCommand = new SqlCommand("Select * From [Config]", sqlConnection);
+            SqlCommand sqlCommandWrite = new SqlCommand("Select * From [CPU]", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
-            sqlCommand.Parameters.AddWithValue("Seria", "FX 6300");
-            sqlCommand.Parameters.AddWithValue("Soket", "AM3+");
-            sqlCommand.Parameters.AddWithValue("TechProc", 32);
-            sqlCommand.Parameters.AddWithValue("EnergyPotr", 95);
-            sqlCommand.Parameters.AddWithValue("Takt", 10);
-            sqlCommand.Parameters.AddWithValue("Yadra", 6);
+            SqlDataReader dataReader = null;
 
-            sqlConnection.Open();
-            SqlDataReader reader = sqlCommand.ExecuteReader();
+            sqlCommandRead.Parameters.AddWithValue("Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
+            sqlCommandRead.Parameters.AddWithValue("Seria", "FX 6300");
+            sqlCommandRead.Parameters.AddWithValue("Soket", "AM3+");
+            sqlCommandRead.Parameters.AddWithValue("TechProc", 32);
+            sqlCommandRead.Parameters.AddWithValue("EnergyPotr", 95);
+            sqlCommandRead.Parameters.AddWithValue("Takt", 10);
+            sqlCommandRead.Parameters.AddWithValue("Yadra", 6);
 
-            while (reader.Read())
+            await sqlConnection.OpenAsync();
+            dataReader = await sqlCommandWrite.ExecuteReaderAsync();
+
+            while (await dataReader.ReadAsync())
             {
-                WriteDataGridView[0, 0].Value = reader["Nazv"].ToString();
+                WriteDataGridView[0, 0].Value = dataReader["Nazv"].ToString();
+                WriteDataGridView[0, 1].Value = dataReader["Seria"].ToString();
+                WriteDataGridView[0, 2].Value = dataReader["Socket"].ToString();
             }
 
             sqlConnection.Close();
