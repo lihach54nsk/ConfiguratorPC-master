@@ -80,6 +80,7 @@
             // 
             // ReadDataGridView
             // 
+            this.ReadDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ReadDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReadDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -90,7 +91,7 @@
             this.Column6});
             this.ReadDataGridView.Location = new System.Drawing.Point(12, 12);
             this.ReadDataGridView.Name = "ReadDataGridView";
-            this.ReadDataGridView.Size = new System.Drawing.Size(643, 131);
+            this.ReadDataGridView.Size = new System.Drawing.Size(924, 131);
             this.ReadDataGridView.TabIndex = 6;
             // 
             // Column1
@@ -125,6 +126,7 @@
             // 
             // WriteDataGridView
             // 
+            this.WriteDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.WriteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WriteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -135,7 +137,7 @@
             this.dataGridViewTextBoxColumn6});
             this.WriteDataGridView.Location = new System.Drawing.Point(12, 149);
             this.WriteDataGridView.Name = "WriteDataGridView";
-            this.WriteDataGridView.Size = new System.Drawing.Size(643, 131);
+            this.WriteDataGridView.Size = new System.Drawing.Size(924, 131);
             this.WriteDataGridView.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn1
@@ -172,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 344);
+            this.ClientSize = new System.Drawing.Size(948, 389);
             this.Controls.Add(this.WriteDataGridView);
             this.Controls.Add(this.ReadDataGridView);
             this.Controls.Add(this.RandomButton);
@@ -180,6 +182,7 @@
             this.Controls.Add(this.AddButton);
             this.Name = "Interface";
             this.Text = "Конфигуратор ПК";
+            this.Load += new System.EventHandler(this.Interface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ReadDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WriteDataGridView)).EndInit();
             this.ResumeLayout(false);
