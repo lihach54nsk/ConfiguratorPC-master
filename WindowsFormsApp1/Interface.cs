@@ -13,16 +13,22 @@ namespace WindowsFormsApp1
 {
     public partial class Interface : Form
     {
-        SqlConnection sqlConnection = new SqlConnection();
+
+
+        SqlConnection sqlConnection;
 
         public Interface()
         {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ГЕРАЛЬТ ИЗ РИВИИ\DESKTOP\CONFIGURATORPC-MASTER\WINDOWSFORMSAPP1\CONFIG.MDF;Integrated Security=True";
             InitializeComponent();
+            sqlConnection = new SqlConnection(connectionString);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+            //SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+
+            SqlCommand sqlCommand = new SqlCommand("Select * From [Interface]", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
             sqlCommand.Parameters.AddWithValue("@Seria", "FX 6300");
@@ -35,7 +41,9 @@ namespace WindowsFormsApp1
 
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+            //SqlCommand sqlCommand = new SqlCommand("Insert Into [Config] (Nazv, Seria, Soket, TechProc, EnergyPotr, Takt, Yadra) Values(@Nazv, @Seria, @Soket, @TechProc, @EnergyPotr, @Takt, @Yadra)", sqlConnection);
+
+            SqlCommand sqlCommand = new SqlCommand("Select * From [Config]", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@Nazv", ReadDataGridView.Rows[0].Cells[0].Value);
             sqlCommand.Parameters.AddWithValue("@Seria", "FX 6300");
@@ -48,9 +56,9 @@ namespace WindowsFormsApp1
             sqlConnection.Open();
             SqlDataReader reader = sqlCommand.ExecuteReader();
 
-            for (int i = 0; i < 9; i++)
+            while (reader.Read())
             {
-                WriteDataGridView.Rows.Add(reader.GetValue(1));
+
             }
         }
     }
